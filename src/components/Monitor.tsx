@@ -4,7 +4,13 @@ import { useInput } from 'ink';
 
 const confirmText = '- Press "Enter" to copy to clipboard';
 
-export const Monitor = ({ files }: { files: Array<string> }) => {
+export const Monitor = ({
+  files,
+  allFilesLength,
+}: {
+  files: Array<string>;
+  allFilesLength: number;
+}) => {
   const maxMonitorHeight = process.stdout.rows - 7;
   const totalFiles = files.length;
   const [offset, setOffset] = useState(0);
@@ -38,20 +44,10 @@ export const Monitor = ({ files }: { files: Array<string> }) => {
     return <></>;
   }
 
-  if (totalFiles === 0) {
-    return (
-      <>
-        <Text dimColor color="yellow">
-          no matched files for pattern
-        </Text>
-      </>
-    );
-  }
-
   return (
     <>
       <Text dimColor color="yellow">
-        {0} / {totalFiles}
+        {totalFiles} / {allFilesLength}
         <Text> {confirmText}</Text>
       </Text>
       {files

@@ -18,6 +18,8 @@ export const interactive = async ({
 }: {
   initialPattern?: string;
 }): Promise<{ pattern: string; files: string[] }> => {
+  const allFiles = await memoizedGetFiles(DEFAULT_PATTERN);
+
   return new Promise((resolve, reject) => {
     let clear: () => void;
     const App = () => {
@@ -69,7 +71,7 @@ export const interactive = async ({
               },
             }}
           />
-          <Monitor files={files} />
+          <Monitor files={files} allFilesLength={allFiles.length} />
         </>
       );
     };
