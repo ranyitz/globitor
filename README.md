@@ -1,5 +1,3 @@
-# Globitor
-
 <h1 align="center">🌐 Globitor</h1>
 <p align="center">Interactive glob pattern tester</p>
 <p align="center">
