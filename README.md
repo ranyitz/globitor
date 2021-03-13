@@ -3,7 +3,7 @@
 <h1 align="center">🌐 Globitor</h1>
 <p align="center">Interactive glob pattern tester</p>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/11733036/111021268-ca483500-83d3-11eb-9f3d-2ce3e194d9ea.gif" alt="globitor-example"/>
+  <img src="https://user-images.githubusercontent.com/11733036/111021463-1778d680-83d5-11eb-8f75-5e16419f1277.gif" alt="globitor-example"/>
 </p>
 <p align="center">
   <a href="https://github.com/ranyitz/globitor/actions/workflows/node.js.yml">
