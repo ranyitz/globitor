@@ -52,7 +52,7 @@ export const Form = ({
         setState({ ...state, cursorOffset: cursorOffset - 1 });
       }
     } else if (key.rightArrow) {
-      if (cursorOffset < input.length) {
+      if (cursorOffset < inputValue.length) {
         setState({ ...state, cursorOffset: cursorOffset + 1 });
       }
     } else if (key.return) {
