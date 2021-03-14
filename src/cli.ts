@@ -13,6 +13,7 @@ const args = arg(
     '--version': Boolean,
     '--help': Boolean,
     '--verbose': Boolean,
+    '--list-matched': Boolean,
 
     // Aliases
     '-v': '--version',
@@ -52,9 +53,15 @@ interactive({
   .then((result) => {
     result.pattern = result.pattern || '**';
     clipboardy.writeSync(result.pattern);
-    console.log(`Pattern: ` + chalk.cyan(result.pattern));
-    console.log(`Matched: ` + result.files.length);
-    console.log(chalk.yellow.dim`Copied pattern to clipboard!`);
+    console.error(`Pattern: ` + chalk.cyan(result.pattern));
+    console.error(`Matched: ` + result.files.length);
+    console.error(chalk.yellow.dim`Copied pattern to clipboard!`);
+
+    if (args['--list-matched']) {
+      for (const file of result.files) {
+        console.log(file);
+      }
+    }
   })
   .catch((error) => {
     if (error === 'abort') {
