@@ -13,7 +13,7 @@ const args = arg(
     '--version': Boolean,
     '--help': Boolean,
     '--verbose': Boolean,
-    '--list-matched': Boolean,
+    '--silent': Boolean,
 
     // Aliases
     '-v': '--version',
@@ -38,6 +38,7 @@ if (args['--help']) {
       > globitor
 
     Options
+      --silent            Don't print matching files
       --version, -v       Version number
       --help, -h          Displays this message
 `);
@@ -57,7 +58,7 @@ interactive({
     console.error(`Matched: ` + result.files.length);
     console.error(chalk.yellow.dim`Copied pattern to clipboard!`);
 
-    if (args['--list-matched']) {
+    if (!args['--silent']) {
       for (const file of result.files) {
         console.log(file);
       }
