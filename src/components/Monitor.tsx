@@ -11,7 +11,7 @@ export const Monitor = ({
   files: Array<string>;
   allFilesLength: number;
 }) => {
-  const maxMonitorHeight = process.stdout.rows - 7;
+  const maxMonitorHeight = process.stderr.rows - 7;
   const totalFiles = files.length;
   const [offset, setOffset] = useState(0);
 
