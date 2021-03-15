@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Text } from 'ink';
 import { useInput } from 'ink';
 
-const confirmText = '- Press "Enter" to copy to clipboard';
+const confirmText = '- Press "Enter" to confirm';
 
 export const Monitor = ({
   files,
@@ -11,7 +11,7 @@ export const Monitor = ({
   files: Array<string>;
   allFilesLength: number;
 }) => {
-  const maxMonitorHeight = process.stdout.rows - 7;
+  const maxMonitorHeight = process.stderr.rows - 7;
   const totalFiles = files.length;
   const [offset, setOffset] = useState(0);
 

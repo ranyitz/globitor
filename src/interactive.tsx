@@ -76,7 +76,10 @@ export const interactive = async ({
       );
     };
 
-    const inkRenderApi = render(<App />, { exitOnCtrlC: false });
+    const inkRenderApi = render(<App />, {
+      exitOnCtrlC: false,
+      stdout: process.stderr,
+    });
 
     clear = inkRenderApi.clear;
   });
