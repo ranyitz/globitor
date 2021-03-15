@@ -1,6 +1,5 @@
 import arg from 'arg';
 import { interactive } from './interactive';
-import clipboardy from 'clipboardy';
 import chalk from 'chalk';
 
 process.on('unhandledRejection', (error) => {
@@ -13,7 +12,6 @@ const args = arg(
     '--version': Boolean,
     '--help': Boolean,
     '--verbose': Boolean,
-    '--silent': Boolean,
 
     // Aliases
     '-v': '--version',
@@ -38,7 +36,6 @@ if (args['--help']) {
       > globitor
 
     Options
-      --silent            Don't print matching files
       --version, -v       Version number
       --help, -h          Displays this message
 `);
@@ -53,15 +50,28 @@ interactive({
 })
   .then((result) => {
     result.pattern = result.pattern || '**';
-    clipboardy.writeSync(result.pattern);
-    console.error(`Pattern: ` + chalk.cyan(result.pattern));
-    console.error(`Matched: ` + result.files.length);
-    console.error(chalk.yellow.dim`Copied pattern to clipboard!`);
+    console.error(chalk.yellow.dim`Pattern: ` + chalk.cyan(result.pattern));
+    console.error(
+      chalk.yellow.dim`Matched: ` + chalk.cyan(result.files.length)
+    );
 
-    if (!args['--silent']) {
-      for (const file of result.files) {
-        console.log(file);
-      }
+    if (result.files.length > 0) {
+      const separatorLength = Math.min(
+        11 +
+          Math.max(
+            result.pattern.length,
+            result.files.length.toString().length
+          ),
+        process.stderr.columns
+      );
+
+      const separator = new Array(separatorLength).fill('-').join('');
+
+      console.error(chalk.yellow.dim(separator));
+    }
+
+    for (const file of result.files) {
+      console.log(file);
     }
   })
   .catch((error) => {

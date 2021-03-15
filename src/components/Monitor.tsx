@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Text } from 'ink';
 import { useInput } from 'ink';
 
-const confirmText = '- Press "Enter" to copy to clipboard';
+const confirmText = '- Press "Enter" to confirm';
 
 export const Monitor = ({
   files,
