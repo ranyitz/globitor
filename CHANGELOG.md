@@ -1,6 +1,6 @@
 ## Changelog
 
-### v0.2.0 (Mar 15, 2021)
+### v0.2.1 (Mar 15, 2021)
 Print matching files ([#1](https://github.com/ranyitz/globitor/pull/1))
 
 ### 0.1.2
