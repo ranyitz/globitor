@@ -15,10 +15,15 @@ type State = {
 
 export const interactive = async ({
   initialPattern,
+  gitignore,
 }: {
   initialPattern?: string;
+  gitignore?: boolean;
 }): Promise<{ pattern: string; files: string[] }> => {
-  const allFiles = await memoizedGetFiles(DEFAULT_PATTERN);
+  const allFiles = await memoizedGetFiles({
+    pattern: DEFAULT_PATTERN,
+    gitignore,
+  });
 
   return new Promise((resolve, reject) => {
     let clear: () => void;
@@ -36,10 +41,10 @@ export const interactive = async ({
         updateFiles(initialPattern);
       }, []);
 
-      const updateFiles = (p: string | undefined) => {
-        if (!p) p = DEFAULT_PATTERN;
+      const updateFiles = (pattern: string | undefined) => {
+        if (!pattern) pattern = DEFAULT_PATTERN;
 
-        memoizedGetFiles(p)
+        memoizedGetFiles({ pattern, gitignore })
           .then((f) => {
             setState({ ...state, patternError: null, files: f });
           })

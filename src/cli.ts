@@ -12,6 +12,7 @@ const args = arg(
     '--version': Boolean,
     '--help': Boolean,
     '--verbose': Boolean,
+    '--gitignore': Boolean,
 
     // Aliases
     '-v': '--version',
@@ -38,15 +39,21 @@ if (args['--help']) {
     Options
       --version, -v       Version number
       --help, -h          Displays this message
+
+      --gitignore         Include files ignored by patterns in '.gitignore'
 `);
 
   process.exit(0);
 }
 
 const [pattern] = args._.slice(0, 1);
+// negate the '--gitignore' CLI parameter, as this is how globby works (which *ignores* files from .gitignore if gitignore set to true)
+// to make it easier on the user, by default we want to ignore the files in .gitignore and only if '--gitignore' is set they should be included
+const gitignore = !args['--gitignore'];
 
 interactive({
   initialPattern: pattern,
+  gitignore,
 })
   .then((result) => {
     result.pattern = result.pattern || '**';
