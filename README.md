@@ -34,6 +34,8 @@ npx globitor
     Options
       --version, -v       Version number
       --help, -h          Displays this message
+
+      --gitignore         Include files ignored by patterns in '.gitignore'
 ```
 
 ## Development
