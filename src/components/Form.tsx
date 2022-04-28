@@ -89,13 +89,8 @@ export const Form = ({
     }
   });
 
-  const {
-    placeholder,
-    initialValue,
-    onChange,
-    label,
-    validationError,
-  } = inputDescriptor;
+  const { placeholder, initialValue, onChange, label, validationError } =
+    inputDescriptor;
   return (
     <Box flexDirection="column">
       <Input
