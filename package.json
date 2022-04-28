@@ -3,9 +3,7 @@
   "version": "0.2.1",
   "main": "build/index.js",
   "types": "build/index.d.ts",
-  "bin": {
-    "globitor": "bin/globitor"
-  },
+  "bin": "bin/globitor",
   "files": [
     "dist",
     "bin"
@@ -51,5 +49,6 @@
   },
   "lint-staged": {
     "*.ts": "eslint --cache --fix"
-  }
+  },
+  "packageManager": "yarn@3.2.0"
 }
