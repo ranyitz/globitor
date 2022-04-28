@@ -1,6 +1,6 @@
 ## Changelog
 
-### v0.3.0 (Apr 28, 2022)
+### v0.4.0 (Apr 28, 2022)
 
 Drop support for node 12, yarn 3, dependency updates
 
